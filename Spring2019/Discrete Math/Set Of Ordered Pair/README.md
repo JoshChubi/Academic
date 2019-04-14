@@ -1,5 +1,5 @@
 # Set Of Ordered Pairs
-Program to become familiarized with sets, written in c++
+Program to become familiarized with Ordered Pairs, written in c++
 
 ## Ordered Pair Functions
 * show     - prints ordered pair
