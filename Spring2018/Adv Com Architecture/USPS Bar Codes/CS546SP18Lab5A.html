@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Los Angeles Pierce College -- Computer Science -- J.H.Murphy</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="text/html; charset=UTF-8" name=Content-Type>
+<META
+content="Pierce College, Computer Science 546, &#13;&#10; , CS546, BMP "
+name=keywords>
+<META content="Computer Science 546 Assignments" name=description>
+<META
+content="Copyright (c) 2000-2018 Hank Murphy,&#13;&#10;     All Rights Reserved"
+name=copyright>
+<META content="Hank Murphy" name=author>
+<META http-equiv=expires content=0><!-- Force reload -->
+<META content="MSHTML 6.00.2900.3395" name=GENERATOR></HEAD>
+</head>
+<body bgColor="#ffffff">
+<P>
+<map name="PierceTop" id="LAPCTop">
+
+  <area href="http://www.piercecollege.edu"
+   alt="Pierce College link"
+   title="Pierce College main page"
+   shape="rect"
+   coords="1,1,370,60" />
+
+  <area
+   alt="Why Attend Pierce?"
+   title="Top 10 Reasons To Choose Pierce!"
+   shape="rect"
+   href="http://www.piercecollege.edu/pierce_why.asp"
+   coords="1,66,170,90" />
+
+  <area
+   alt="Pierce College Student Information"
+   title="Pierce College student page"
+   shape="rect"
+   href="http://www.piercecollege.edu/pierce_students.asp"
+   coords="180,66,270,90" />
+
+  <area
+   alt="Pierce College Faculty Information"
+   title="Pierce College faculty page"
+   shape="rect"
+   href="http://www.piercecollege.edu/pierce_facstaff.asp"
+   coords="280,66,400,90" />
+
+  <area
+   alt="Pierce College Community Information"
+   title="Pierce College community page"
+   shape="rect"
+   href="http://www.piercecollege.edu/pierce_community.asp"
+   coords="410,66,510,90" />
+
+  <area
+   alt="Pierce College Online link"
+   title="Pierce College online courses"
+   shape="rect"
+   href="http://online.piercecollege.edu/"
+   coords="520,66,640,90" />
+
+</map>
+
+<IMG SRC="http://faculty.piercecollege.edu/murphyh/CS575/PierceTopBar.jpg" usemap="#LAPCTop"  >
+</P>
+<P>&nbsp;</P>
+<H1>Spring 2018 CS546 Lab Assignment 5 Option A</H1>
+<P>&nbsp;</P><P>
+This is the fifth lab assignment for this course.  It is due no later than Tuesday, May 29, 2018 by 11:59 PM.
+You will submit it through a Canvas upload.</P>
+
+<P>This assignment will use some of the bit map creation skills you used in lab assignment 3.</P>  
+
+<P>There will be another option for lab assignment 5.</P>  
+
+<P>The naming convention specified for this assignment is to use your initials (three letters please), the word 
+Lab, and the digit 5 for this assignment. 
+Use 'X' if you do not have a middle name or last name. 
+Thus, if W.C.Fields were taking this class and turning in this lab, he would provide a file named WCFLab5.cpp. 
+If Madonna were taking this class, her lab would be MxxLab5.cpp.</P>
+<P>Only turn in the program source file, 
+i.e. the C++ source code with embedded Intel assembler code.  You should use Intel assembly code to generate each 
+digit's bit map.</P>
+
+<P>Your program should start with the following heading: 
+<CODE><PRE><B><FONT COLOR="green">
+// Lastname, Firstname        CS546 Section 14860  Date completed
+// Fifth Laboratory Assignment - Option A - Generate USPS bar codes
+</B></PRE></CODE></FONT>
+</P>
+<H3>The Problem</H3>
+<P>The United States Postal Service offers reduced rates for bulk mailers who follow their addressing requirements.
+One of these is to generate a machine-readable bar code on each envelope below the address.</P>
+<P>The <A HREF="https://en.wikipedia.org/wiki/POSTNET">Wikipedia article about PostNet</A> explains the bar code.  
+It includes a check digit, which you will also need to generate.  We will not be generating the two Delivery Point digits.</P>
+
+<P>Write a program to prompt the user for a nine-digit Zip+4 code.  You should allow the user to enter a five-digit zip code,
+followed by the four-digit +4 portion.  Your program should then generate a bit map with the appropriate PostNet-coded symbols, including the check digit.
+ The background color should be white.</P>
+ <P>The size of the bit map depends upon the resolution of the printer used to put it on paper.  The 
+ <A HREF=" https://pe.usps.com/text/dmm300/204.htm">USPS site</A> presents the following standards for bar size:<BR>
+<CODE><PRE>
+1.2.5 POSTNET Barcode Dimensions and Spacing
+POSTNET barcodes are subject to these standards for bar dimensions and spacing. Extraneous ink or ink voids must not 
+cause any bar to fail to meet these standards:
+
+A full bar must be 0.125 ±0.010 inch high.
+A half bar must be 0.050 ±0.010 inch high.
+All bars must be 0.020 ±0.005 inch wide.
+Measured over any 1/2 inch, horizontal spacing of the bars must be 22 ±2 bars per inch, and pitch (a bar and a space) must 
+average at least 0.0416 inch but no more than 0.05 inch. The clear vertical space between bars must not be less than 0.012 
+inch or more than 0.04 inch.
+</PRE></CODE></P>
+<P>The printer in the room 1505 lab is an HP Lawerjet 4015p, which prints at a resolution of 1200 dots per inch.  Thus,
+using the USPS standards above, our full height bars should be 1200 pixels times 0.125, or 150 pixels high, and the half bars
+should be 1200 times 0.05, or 60 pixels high.  Bars should be 1200 times 0.02, or 24 pixels wide.</P>
+<P>Bars should be spaced on roughly 54-pixel centers, so there should be 30 white pixels between each 24-pixel-wide bar.
+</P>
+<P>As a result, the bar code bit map should be about 2900 pixels wide, and at least 160 pixels high - you should leave some white space at the top, bottom, and edges.</P>
+<P>The bit map will be monochrome, but may be produced as a gray scale image like we did in lab 3. </P>
+<P>Your output file should be named FMLLab5.bmp (i.e. the same naming convention as your program name), and must be placed in the C:\Temp directory.
+
+<P>There are several bar code generators on the internet, and you should use them to check your output.</P>
+<H3>Sample </H3>
+<CODE><PRE><B>
+Enter a five-digit Zip code and a four-digit Zip+4 extension:
+91371 0001
+Bit map file FMLLab5.bmp created.
+</B></PRE></CODE>
+<HR>
+<H3>Grading Standards</H3>
+<P><UL>
+<LI>Successful display of input values as a bit map: 7 points
+<LI>Successful compile by the instructor: 2 points
+<LI>Correct naming standards followed: 1 point
+</UL>
+</P>
+
+<P>&nbsp;</P>
+
+<HR>
+<P><BR></P>
+<CENTER><FONT color=#c0c0c0 size=1>© 2000-2018 Hank Murphy. All rights reserved.
+Reproduction by persons other than current students in the Computer Science 546. 559, 
+or 575 class taught by the author is prohibited. </FONT></CENTER></BODY></HTML>
+
+
+
+
+
+
+
+
+
