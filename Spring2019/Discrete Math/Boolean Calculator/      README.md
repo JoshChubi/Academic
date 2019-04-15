@@ -1,5 +1,5 @@
 # Boolean Calculator
-A program to eveluate boolean expressions entered by user
+A program to eveluate boolean expressions entered by user, C++
 
 # Order of operations
 1. !&nbsp;&nbsp;&nbsp;&nbsp;as the (unary) not operator
