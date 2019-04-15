@@ -1,5 +1,6 @@
 # Arithmetic and Geometric Series
-Program that when given 3 variables for Arithmetic and Geometric series, will solve for missing two variables
+Program that when given 3 variables for Arithmetic and Geometric series, will solve for missing two variables<br />
+Become familiarized with function pointers in C++
 
 ## Ignore These Cases
 ### Arithmetic<br />
