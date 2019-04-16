@@ -17,3 +17,8 @@ Class to store buckets of records to binary a binary file.
 * isRoom: determines if bucket is at capacity
 * revealTable: displays all buckets and its contents
 * retrive: returns record determied by ID, using h/h2 to find bucket
+
+# Main
+Enter ID followed by Name <br />
+Enter Desired ID 
+* enter ID zero( 0 ) to quit
