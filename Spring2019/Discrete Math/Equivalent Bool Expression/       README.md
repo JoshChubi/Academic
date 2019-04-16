@@ -1,11 +1,14 @@
 # Equivalent Bool Expression
 Enter multiple expressions, and program evaluates whether their truth tables are equivalent, C++
 
-# Expression Format
+## Expression Format
 * Seperated by commas ','
 * Variables must be capitalized
-* Variables presence must correspond in each expression
+* Must be more than one expression
 
-# Tutorial
+## Notes
+* Using Set for variables, inorder to avoid duplicates
+
+## Tutorial
 Enter expressions following valid format<br />
 Blank line terminates program
