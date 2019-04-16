@@ -1,21 +1,21 @@
 /*CS 552 Josh Ortiz*/
 import java.util.Scanner;
 
-class onee
+class areaOfTriangle
 {
 	public static void main(String[] args)
 	{
-		float base, hight, area;
+		float base, height, area;
 		
 		Scanner triangleScan = new Scanner(System.in);
 		
-		System.out.println("Please enter the base in liner feet\n");
+		System.out.println("Please enter the base in linear feet\n");
 		base = triangleScan.nextFloat();
 		
-		System.out.println("Please enter the hight in liner feet\n");
-		hight = triangleScan.nextFloat();
+		System.out.println("Please enter the hight in linear feet\n");
+		height = triangleScan.nextFloat();
 		
-		area = base*hight/2;
+		area = base*height/2;
 		
 		System.out.println("The area is: "+area+" Square ft");
 	}
