@@ -1,4 +1,5 @@
 #include "boolEquiv.h"
+
 bool next(std::string & curVal)
 {
 	for (unsigned i = curVal.size() - 1; ; i--)
@@ -19,19 +20,6 @@ bool lowerCaseVar(const std::string & exprStr)
 	return false;
 }
 
-bool unCorrespondingVar(std::vector<std::string> exprVec, std::string baseVar)
-{
-	sort(baseVar.begin(), baseVar.end());
-	for (unsigned index = 1; index < exprVec.size(); index++)
-	{
-		std::string corrVar = findVar(exprVec[index]);
-		sort(corrVar.begin(), corrVar.end());
-		if (baseVar != corrVar)
-			return true;
-	}
-	return false;
-}
-
 std::vector<std::string> split(const std::string & fullExpr, const char & delimiter)
 {
 	unsigned pos = 0;
@@ -49,24 +37,22 @@ std::vector<std::string> split(const std::string & fullExpr, const char & delimi
 	return tokens;
 }
 
-std::string findVar(std::string expr)
+std::set<char> findVar(const std::string & expr)
 {
-	std::string var = "";
+	std::set<char> var;
 
 	for (char c : expr)
 		if (isalpha(c))
-		{
-			var += c;
-			replace(expr.begin(), expr.end(), c, '\0');
-		}
+			var.insert(c);
 
 	return var;
 }
 
-std::string replacVar(std::string expr, const std::string & var, const std::string & curVal)
+std::string replacVar(std::string expr, const std::set<char> & varSet, const std::string & curVal)
 {
-	for (unsigned index = 0; index < var.length(); index++)
-		replace(expr.begin(), expr.end(), var[index], curVal[index]);
+	auto varSetIndex = varSet.begin();
+	for (unsigned index = 0; index < varSet.size(); index++, varSetIndex++)
+		replace(expr.begin(), expr.end(), *varSetIndex, curVal[index]);
 
 	return expr;
 }
@@ -74,15 +60,13 @@ std::string replacVar(std::string expr, const std::string & var, const std::stri
 std::string equivalence(const std::string & exprStr)
 {
 	std::vector<std::string> exprVec = split(exprStr, DELIMITER);
-	std::string variables = findVar(exprVec[0]);
-	std::string curVal(variables.length(), '0');
+	std::set<char> variables = findVar(exprStr);
+	std::string curVal(variables.size(), '0');
 
 	if (exprVec.size() == 1)
 		return "Requires more than one expression";
 	else if (lowerCaseVar(exprStr))
 		return "Variables must be uppercase";
-	else if (unCorrespondingVar(exprVec, variables))
-		return "Expressions must have corresponding variables";
 
 	do
 	{
