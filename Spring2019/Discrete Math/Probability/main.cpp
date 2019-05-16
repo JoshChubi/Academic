@@ -16,6 +16,7 @@ double monotonic(unsigned a, unsigned b);
 double strictlyMonotonic(unsigned a, unsigned b);
 
 void shuffle(string & s);
+bool checkNest(const string & str);
 double okNesting(unsigned n);
 
 double duel(double a, double b);
@@ -29,9 +30,8 @@ const unsigned TRIALS = 1'000'000;
 
 int main()
 {
-	cout << int(4 == 4) << endl;
 	cout << monotonic(2, 3) << endl;
-	cout << strictlyMonotonic(2, 2) << endl;
+	cout << strictlyMonotonic(2, 3) << endl;
 	cout << okNesting(2) << endl;
 	cout << duel(.5, .5) << endl;
 	cout << flip(2.0/3.0, 5, 3) << endl;
@@ -104,18 +104,27 @@ void shuffle(string & s)
 		swap(s[i], s[rand() % (i + 1)]);
 }
 
+bool checkNest(const string & str)
+{
+	string temp = str;
+	while (temp != "()")
+	{
+		auto pos = temp.find("()");
+		if (pos == string::npos)
+			return false;
+		temp.erase(pos, 2);
+	}
+	return true;
+}
+
 double okNesting(unsigned n)
 {
-	string str = string(n, '(') + string(n, ')');
-	string caseOne = string(n,'(')+string(n,')');
-	string caseTwo = "";
-	for (unsigned itter = 0; itter < n; itter++)
-		caseTwo += "()";
 	unsigned count = 0;
+	string str = string(n, '(') + string(n, ')');
 	for (unsigned attempts = 0; attempts < TRIALS; attempts++)
 	{
 		shuffle(str);
-		count += int(!str.compare(caseOne) || !str.compare(caseTwo));
+		count += int(checkNest(str));
 	}
 	return double(count) / TRIALS;
 }
