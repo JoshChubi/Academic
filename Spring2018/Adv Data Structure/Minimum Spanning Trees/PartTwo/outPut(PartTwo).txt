@@ -1,0 +1,14 @@
+Minimum Spaning Tree
+The Edges are:
+
+ (1 , 0 )
+ (4 , 0 )
+ (3 , 0 )
+ (2 , 1 )
+ (5 , 2 )
+ (6 , 3 )
+ (8 , 5 )
+ (7 , 6 )
+
+Minimum Spaning Tree sum is: 84
+Press any key to continue . . .
